@@ -15,6 +15,7 @@ from slowapi.errors import RateLimitExceeded
 
 from fastapi import FastAPI, UploadFile, File, Depends, HTTPException, Request, Form, status
 from fastapi.responses import HTMLResponse, RedirectResponse, FileResponse, PlainTextResponse, JSONResponse
+from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from starlette.background import BackgroundTasks
 
@@ -74,6 +75,7 @@ async def lifespan(app: FastAPI):
     yield
 
 app = FastAPI(title="AI 会议纪要系统 (终极版)", lifespan=lifespan)
+app.mount("/static", StaticFiles(directory="static"), name="static")
 # ★★★ 新增：将“门卫”和它的“规则手册”注册到我们的应用中 ★★★
 app.state.limiter = limiter
 app.add_exception_handler(RateLimitExceeded, rate_limit_exception_handler)# type: ignore
