@@ -31,8 +31,8 @@ engine = create_engine(DATABASE_URL, connect_args={"check_same_thread": False})
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
 
-GEMINI_API_KEY = "AIzaSyBKBY2TSE8EM_rqdEoUTfEjGyvd5dk3gPY"
-OPENAI_API_KEY = "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"
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "在服务器环境变量中设置")
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "在服务器环境变量中设置")
 # 从服务器环境变量读取代理地址，如果不存在，则此变量为None
 PROXY_URL = os.getenv("PROXY_URL")
 # ★★★ 新增：创建并配置我们的“门卫” ★★★
