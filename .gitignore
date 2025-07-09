@@ -1,0 +1,7 @@
+venv/
+__pycache__/
+*.db
+*.db-journal
+uploads/
+temp_chunks/
+config.py  # <-- 确保这一行存在！
