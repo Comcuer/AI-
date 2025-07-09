@@ -33,7 +33,8 @@ Base = declarative_base()
 
 GEMINI_API_KEY = "AIzaSyBKBY2TSE8EM_rqdEoUTfEjGyvd5dk3gPY"
 OPENAI_API_KEY = "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"
-PROXY_URL = "http://127.0.0.1:10090"
+# 从服务器环境变量读取代理地址，如果不存在，则此变量为None
+PROXY_URL = os.getenv("PROXY_URL")
 # ★★★ 新增：创建并配置我们的“门卫” ★★★
 # get_remote_address 会获取访问者的IP地址
 # default_limits 是我们的默认规则，但我们稍后会为具体接口单独设置
